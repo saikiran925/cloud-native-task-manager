@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+  backend:
+    build: ./task-manager-backend
+    container_name: backend
+    ports:
+      - "5000:5000"
+    environment:
+      MONGO_URL: mongodb://mongodb:27017/taskmanager
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./task-manager-frontend
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  mongo-data:

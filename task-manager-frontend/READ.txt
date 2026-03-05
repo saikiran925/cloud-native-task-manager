@@ -1,0 +1,14 @@
+
+APP.JSX
+
+Understand What Happened
+
+useState → stores data
+
+tasks → list of tasks
+
+input → text field value
+
+addTask() → adds task to list
+
+React automatically updates UI when state changes
