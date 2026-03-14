@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template: # <--- THE POD STARTS HERE
+    metadata:
+      labels: # This label goes on the OUTSIDE of the Pod
+        app: backend
+    spec: # These are the rules for the Pod itself
+      containers: # <--- THE CONTAINER STARTS HERE
+      - name: backend
+        image: saikiran1412/backend:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        env: # Environment variables are fed directly into the container
+        - name: MONGO_URL
+          value: "mongodb://mongodb:27017/taskmanager"

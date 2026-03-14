@@ -1,0 +1,60 @@
+<mxfile host="65bd71144e">
+    <diagram id="nodeport-diagram" name="1. Backend (NodePort)">
+        <mxGraphModel dx="686" dy="436" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="node-bg" value="Minikube Node (Your PC)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e1e1e;strokeColor=#666666;fontColor=#ffffff;verticalAlign=top;align=left;spacing=15;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="80" width="600" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="np-circle" value="3. NodePort&#xa;30001" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f47c36;strokeColor=#b34700;fontColor=#ffffff;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="80" y="200" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="svc-box" value="Service&#xa;(backend)&#xa;10.x.x.x" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196f3;strokeColor=#1565c0;fontColor=#ffffff;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="200" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="pod-bg" value="Pod (Node.js)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;verticalAlign=bottom;spacing=10;fontColor=#000000;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="520" y="140" width="160" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="tp-box" value="1. TargetPort&#xa;5000" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#2196f3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="220" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge1" value="Traffic from Laptop" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontColor=#ffffff;" parent="1" source="np-circle" target="svc-box" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge2" value="2. Port 5000" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontColor=#ffffff;" parent="1" source="svc-box" target="tp-box" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="clusterip-diagram" name="2. Database (ClusterIP)">
+        <mxGraphModel dx="686" dy="436" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="node-bg2" value="Internal Kubernetes Network" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e1e1e;strokeColor=#666666;fontColor=#ffffff;verticalAlign=top;align=left;spacing=15;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="80" width="680" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="src-pod" value="Backend Pod" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontColor=#000000;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="120" y="200" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="svc-box2" value="Service&#xa;(mongodb)&#xa;10.x.x.x" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196f3;strokeColor=#1565c0;fontColor=#ffffff;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="200" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="pod-bg2" value="Pod (MongoDB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;verticalAlign=bottom;spacing=10;fontColor=#000000;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="560" y="140" width="160" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="tp-box2" value="1. TargetPort&#xa;27017" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#2196f3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="220" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge1_2" value="DNS: mongodb://..." style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontColor=#ffffff;" parent="1" source="src-pod" target="svc-box2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge2_2" value="2. Port 27017" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontColor=#ffffff;" parent="1" source="svc-box2" target="tp-box2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
