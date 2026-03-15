@@ -1,0 +1,28 @@
+#path_backend.replicaCount: 1
+backend:
+  replicaCount: 1
+  image:
+    repository: saikiran1412/backend
+    tag: latest
+
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: saikiran1412/frontend
+    tag: latest
+  service:
+    type: NodePort
+    port: 80
+    
+
+mongodb:
+  replicaCount: 1
+  image:
+    repository: mongo
+    tag: latest
+  persistence:
+    enabled: true
+    storageClass: "standard"
+    accessMode: ReadWriteOnce
+    size: 100Mi

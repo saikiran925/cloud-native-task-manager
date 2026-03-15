@@ -8,7 +8,10 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
+    # ADD THESE TWO LINES RIGHT HERE to fix the warning:
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4

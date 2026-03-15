@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: {{ .Values.frontend.service.port }} # the port that the service will listen on
+      targetPort: 5173 # the port that the frontend container is listening on
+      nodePort: 30000 # the port that will be exposed on each node
+  type: {{.Values.frontend.service.type}}
+
+  
